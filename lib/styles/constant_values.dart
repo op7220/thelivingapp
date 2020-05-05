@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+
+//double value
+const double d_0=0.0;
+const double d_1=1.0;
+const double d_2=2.0;
+const double d_3=3.0;
+const double d_4=4.0;
+const double d_5=5.0;
+const double d_6=6.0;
+const double d_7=7.0;
+const double d_8=8.0;
+const double d_9=9.0;
+const double d_10=10.0;
+const double d_11=11.0;
+const double d_12=12.0;
+const double d_13=13.0;
+const double d_14=14.0;
+const double d_15=15.0;
+const double d_16=16.0;
+const double d_17=17.0;
+const double d_18=18.0;
+const double d_20=20.0;
+const double d_22=22.0;
+const double d_24=24.0;
+const double d_25=25.0;
+const double d_28=28.0;
+const double d_30=30.0;
+const double d_35=35.0;
+const double d_37=37.0;
+const double d_40=40.0;
+const double d_43=43.0;
+const double d_44=44.0;
+const double d_45=45.0;
+const double d_48=48.0;
+const double d_55=55.0;
+const double d_60=60.0;
+const double d_120=120.0;
+const double d_130=130.0;
+const double d_145=145.0;
+const double d_150=150.0;
+const double d_165=165.0;
+const double d_172=172.0;
+const double d_175=175.0;
+const double d_185=185.0;
+const double d_182=182.0;
+const double d_200=200.0;
+const double d_220=220.0;
+const double d_225=225.0;
+const double d_250=250.0;
+const double d_260=260.0;
+const double d_300=300.0;
+
+
+//Int values
+const int i_0=0;
+const int i_1=1;
+const int i_2=2;
+const int i_3=3;
+const int i_4=4;
+const int i_5=5;
+const int i_6=6;
+const int i_8=8;
+const int i_10=10;
+const int i_12=12;
+const int i_13=13;
+const int i_15=15;
+const int i_20=20;
+const int i_40=40;
+const int i_100=100;
+const int i_200=200;
+const int i_400=400;
+
