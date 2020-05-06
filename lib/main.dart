@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlivingapp/locator.dart';
 import 'package:flutterlivingapp/routes.dart';
+import 'package:flutterlivingapp/screens/splash_screen.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-    //  home: SplashScreen(),
+      home: SplashScreen(),
       onGenerateRoute: Router.generateRoute,
 
     );

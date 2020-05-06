@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 
 //getit used to inject the class
-GetIt locator = GetIt();
+GetIt locator = GetIt.asNewInstance();
 
 void setupLocator() {
   //loginLocator
