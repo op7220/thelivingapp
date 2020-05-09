@@ -1,20 +1,31 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterlivingapp/styles/color.dart';
+import 'package:flutterlivingapp/styles/size_config.dart';
 
 import 'constant_values.dart';
+class AppStyle {
+  AppStyle._();
 
 //text_style
-TextStyle style1=TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.black);
-const headerStyle = TextStyle(fontSize: d_25, fontWeight: FontWeight.w600);
-const verificationHeaderStyle = TextStyle(fontSize: d_30, fontWeight: FontWeight.w600);
-const subHeaderStyle = TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500);
-const notificationTextStyle=TextStyle(fontSize: d_15, color: Colors.black, fontWeight: FontWeight.w500);
-const commonTextStyle=TextStyle(fontSize: d_14,color: greyishBrown,fontWeight: FontWeight.w600);
-const newsHeadingTextStyle=TextStyle(fontSize: d_18, fontWeight: FontWeight.w700);
-const newsContentTextStyle=TextStyle(fontSize: d_14,color: Colors.black,);
-const timeDateTextStyle=TextStyle(fontSize: d_12,color: greyishBrown);
+  TextStyle style1 = TextStyle(
+      fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black);
+ static final headerStyle = TextStyle(
+      fontSize: 3.5 * SizeConfig.textMultiplier, fontWeight: FontWeight.w600);
+  static final editTextFont = TextStyle(
+      fontSize: 2.5 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400);
+  static final subHeaderStyle = TextStyle(
+      fontSize: 2.8* SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400);
+  static final labelTextStyle = TextStyle(
+      fontSize: 2.6* SizeConfig.textMultiplier, color: Colors.white, fontWeight: FontWeight.w400,decoration: TextDecoration.underline);
+  static final commonTextStyle = TextStyle(
+      fontSize: d_14, color: greyishBrown, fontWeight: FontWeight.w600);
+  static final newsHeadingTextStyle = TextStyle(
+      fontSize: d_18, fontWeight: FontWeight.w700);
+  static final newsContentTextStyle = TextStyle(fontSize: d_14, color: Colors.black,);
+  static  final timeDateTextStyle = TextStyle(fontSize: d_12, color: greyishBrown);
 
-
+}
 
 
 

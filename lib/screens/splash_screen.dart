@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutterlivingapp/screens/signup_screen.dart';
+import 'package:flutterlivingapp/styles/constant_values.dart';
+import 'package:flutterlivingapp/styles/images.dart';
+import 'package:flutterlivingapp/styles/text_style.dart';
 
 import 'login_screen.dart';
 
@@ -41,7 +44,7 @@ class SplashScreenState extends State<SplashScreen>
             elevation: 0,
             backgroundColor: Colors.teal,
           ),
-          preferredSize: Size.fromHeight(20),
+          preferredSize: Size.fromHeight(d_20),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -49,7 +52,8 @@ class SplashScreenState extends State<SplashScreen>
               children: <Widget>[
                 splashImage(),
                 textView(),
-                SizedBox(height: 200,),
+                SizedBox(height: d_200,),
+                bottomView("Guest Account"),
                 bottomView("Get Started"),
                 bottomView("Login"),
 
@@ -62,25 +66,22 @@ class SplashScreenState extends State<SplashScreen>
   splashImage() {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      width: 80,
-      height: 80,
-      child: Image.asset(
-        "image/splashtwo.jpeg",
-        fit: BoxFit.contain,
-      ),
+      width: d_120,
+      height: d_120,
+      child: loginImage
     );
   }
 
   textView() {
     return Container(
-      margin: EdgeInsets.only(top: 50),
-      child: Text("Unlock the Thousands of\n   Money Saving Deals",style: TextStyle(color: Colors.white),),
+      margin: EdgeInsets.only(top: d_52),
+      child: Text("Unlock the Thousands of\n   Money Saving Deals",style: AppStyle.subHeaderStyle,),
     );
   }
 
   bottomView(String title) {
     return Container(
-      width: 150,
+      width:  MediaQuery.of(context).size.width * 0.4,
       height: 50,
       margin: EdgeInsets.only(top: 15),
       child:MaterialButton(
@@ -89,7 +90,7 @@ class SplashScreenState extends State<SplashScreen>
               borderRadius: new BorderRadius.circular(5.0),
               side: BorderSide(color: Colors.white)
           ),
-          child: Text(title,style: TextStyle(color: Colors.white,fontSize: 12),),
+          child: Text(title,style: TextStyle(color: Colors.white,fontSize: d_14),),
           onPressed: ()
           {
             if(title=="Login")

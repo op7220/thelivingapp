@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlivingapp/screens/base_view.dart';
 import 'package:flutterlivingapp/screens/splash_screen.dart';
+import 'package:flutterlivingapp/styles/constant_values.dart';
+import 'package:flutterlivingapp/styles/images.dart';
+import 'package:flutterlivingapp/styles/strings.dart';
+import 'package:flutterlivingapp/styles/text_style.dart';
+import 'package:flutterlivingapp/utils/app_tools.dart';
+import 'package:flutterlivingapp/utils/network.dart';
+import 'package:flutterlivingapp/utils/util.dart';
+import 'package:flutterlivingapp/view_model/loginVM.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,71 +18,97 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController email = new TextEditingController();
+  TextEditingController pass = TextEditingController();
+  var emailId, password;
+  bool connectionResult = false;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _checkConnection();
+  }
+
+  _checkConnection() async {
+    connectionResult = await NetworkConnection().checkInternetConnection();
+    print("==>${connectionResult}");
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.teal,
-        appBar: PreferredSize(
-          child: AppBar(
-            elevation: 0,
+    return BaseView<LoginViewModel>(
+        builder: (context, model, child) => Scaffold(
+            key: scaffoldKey,
             backgroundColor: Colors.teal,
-          ),
-          preferredSize: Size.fromHeight(20),
-        ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                splashImage(),
-                SizedBox(
-                  height: 30,
-                ),
-                textView("Please enter your email"),
-                textFiled("name"),
-                SizedBox(
-                  height: 10,
-                ),
-                textView("Please enter your password"),
-                textFiled("pass"),
-                forgotPassText(),
-                SizedBox(height: 30,),
-                loginButton(),
-                SizedBox(height: 10,),
-                socialButton("Login"),
-                SizedBox(height: 10,),
-                backButton(),
-              ],
+            appBar: PreferredSize(
+              child: AppBar(
+                elevation: 0,
+                backgroundColor: Colors.teal,
+              ),
+              preferredSize: Size.fromHeight(20),
             ),
-          ),
-        ));
+            body: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    splashImage(),
+                    SizedBox(
+                      height: d_30,
+                    ),
+                    textView(loginlabelText),
+                    textFiled("emailId"),
+                    SizedBox(
+                      height: d_10,
+                    ),
+                    textView(passwordText),
+                    textFiled("pass"),
+                    forgotPassText(),
+                    SizedBox(
+                      height: d_30,
+                    ),
+                    loginButton(model, context),
+                    SizedBox(
+                      height: d_10,
+                    ),
+                    socialButton(loginText),
+                    SizedBox(
+                      height: d_10,
+                    ),
+                    backButton(),
+                  ],
+                ),
+              ),
+            )));
   }
 
   splashImage() {
     return Container(
-      margin: EdgeInsets.only(top: 10),
-      width: 80,
-      height: 80,
-      child: Image.asset(
-        "image/splashtwo.jpeg",
-        fit: BoxFit.contain,
-      ),
-    );
+        margin: EdgeInsets.only(top: d_10),
+        width: d_100,
+        height: d_100,
+        child: loginImage);
   }
 
   textFiled(String value) {
     return Container(
-      margin: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
-      padding: EdgeInsets.only(left: 8),
+      height: d_60,
+      margin: EdgeInsets.only(left: d_40, right: d_40, top: d_10, bottom: d_10),
+      padding: EdgeInsets.only(left: d_8),
       decoration: new BoxDecoration(
           color: Colors.blueGrey,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(d_10),
           border: new Border.all(
             color: Colors.white,
-            width: 2.0,
+            width: d_2,
           )),
       child: TextFormField(
-        obscureText: value=="pass"?true:false,
+        obscureText: value == "pass" ? true : false,
+        controller: value == "emailId" ? email : pass,
+        keyboardType: value=="pass"?TextInputType.emailAddress:TextInputType.emailAddress,
+        style: AppStyle.editTextFont,
         decoration: InputDecoration(
           border: InputBorder.none,
           fillColor: Colors.white,
@@ -83,9 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
   textView(String data) {
     return Container(
       // margin: EdgeInsets.only(top: 50),
+      padding: pd_4,
       child: Text(
         data,
-        style: TextStyle(color: Colors.white, fontSize: 14),
+        style: AppStyle.subHeaderStyle,
       ),
     );
   }
@@ -93,50 +131,65 @@ class _LoginScreenState extends State<LoginScreen> {
   forgotPassText() {
     return Container(
       // margin: EdgeInsets.only(top: 50),
+      padding: pd_2,
       child: Text(
-        "forgot password ?",
-        style: TextStyle(color: Colors.white, fontSize: 12),
+        forgotPassword,
+        style: AppStyle.labelTextStyle,
       ),
     );
   }
 
-  loginButton() {
+  loginButton(LoginViewModel model, BuildContext context) {
     return Container(
-      width: 200,
-      height: 60,
-      margin: EdgeInsets.only(top: 10),
+      width: MediaQuery.of(context).size.width * 0.5,
+      height: d_52,
+      margin: EdgeInsets.only(top: d_10),
       child: MaterialButton(
           color: Colors.transparent,
           shape: RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              side: BorderSide(color: Colors.white)
-          ),
+              borderRadius: new BorderRadius.circular(d_10),
+              side: BorderSide(color: Colors.white)),
           child: Text(
-            "Login",
-            style: TextStyle(color: Colors.white, fontSize: 12),
+            loginText,
+            style: TextStyle(
+                color: Colors.white, fontSize: d_14, letterSpacing: d_1),
           ),
           onPressed: () {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LoginScreen()));
+            _checkConnection();
+            if (connectionResult) {
+              if (model.validateField(email.text, pass.text)) {
+                FocusScope.of(context).requestFocus(new FocusNode());
+                emailId = email.text.toString();
+                password = pass.text.toString();
+                displayProgressDialog(context);
+                model.getData(context, emailId, password).then((resp) {
+                  closeProgressDialog(context);
+                });
+              }
+            }else {
+              showSnackBar(noConnection, scaffoldKey);
+            }
           }),
     );
   }
 
   socialButton(String title) {
-   return Container(
-      width: 150,
-      height: 60,
-
-      margin: EdgeInsets.only(top: 10),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: d_52,
+      margin: EdgeInsets.only(top: d_10),
       child: RaisedButton.icon(
-          shape:RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              side: BorderSide(color: Colors.white)
+          shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(d_10),
+              side: BorderSide(color: Colors.white)),
+          icon: FaIcon(
+            FontAwesomeIcons.facebookF,
+            color: Colors.white,
+            size: d_20,
           ),
-          icon: Icon(Icons.person,color: Colors.white,),
-          label:Text(
+          label: Text(
             title,
-            style: TextStyle(color: Colors.white, fontSize: 12),
+            style: TextStyle(color: Colors.white, fontSize: d_14),
           ),
           color: Colors.transparent,
           onPressed: () {}),
@@ -145,18 +198,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   backButton() {
     return Container(
-      width: 120,
-      height: 60,
-
-      margin: EdgeInsets.only(top: 10),
+      width: MediaQuery.of(context).size.width * 0.3,
+      height: d_48,
+      margin: EdgeInsets.only(top: d_10, bottom: d_30),
       child: RaisedButton(
-          shape:RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              side: BorderSide(color: Colors.white)
-          ),
-          child:Text(
-            "Back",
-            style: TextStyle(color: Colors.white, fontSize: 12),
+          shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(d_10),
+              side: BorderSide(color: Colors.white)),
+          child: Text(
+            back,
+            style: TextStyle(
+                color: Colors.white, fontSize: 12, letterSpacing: d_1),
           ),
           color: Colors.transparent,
           onPressed: () {

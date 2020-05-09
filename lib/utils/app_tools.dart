@@ -80,7 +80,7 @@ Widget headerTitle({String textTitle}) {
         alignment: Alignment.topLeft,
         child: Text(
           textTitle,
-          style: headerStyle,
+          style: AppStyle.headerStyle,
         ),
       ),
     ],

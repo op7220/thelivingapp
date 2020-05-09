@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 import 'app_tools.dart';
 
 class Util {
-
+  ProgressDialog progressDialog;
   static loaderDialog(context) {
     return showDialog(
       context: context,
@@ -18,5 +19,18 @@ class Util {
                 child: Center(child: CircularProgressIndicator())),
           ),
     );
+  }
+
+   showProgressDialog(BuildContext context)
+  {
+    progressDialog=ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true);
+    progressDialog.show();
+  }
+
+  dismissProgressDialog() async
+  {
+    Future.delayed(Duration(seconds: 3)).then((value) {
+      progressDialog.hide();
+    });
   }
 }

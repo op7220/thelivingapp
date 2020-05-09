@@ -24,7 +24,7 @@ class ProgressDialog extends StatelessWidget {
                   new Text(
                     plzWait,
                     style: new TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 16.0,
                         fontWeight: FontWeight.w700),
                   )
