@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     textView(passwordText),
                     textFiled("pass"),
-                    forgotPassText(),
+                    forgotPassText(context),
                     SizedBox(
                       height: d_30,
                     ),
@@ -129,13 +129,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  forgotPassText() {
-    return Container(
-      // margin: EdgeInsets.only(top: 50),
-      padding: pd_2,
-      child: Text(
-        forgotPassword,
-        style: AppStyle.labelTextStyle,
+  forgotPassText(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        showForgotPassDialog(context);
+      },
+      child: Container(
+        // margin: EdgeInsets.only(top: 50),
+        padding: pd_2,
+        child: Text(
+          forgotPassword,
+          style: AppStyle.labelTextStyle,
+        ),
       ),
     );
   }
@@ -219,4 +224,44 @@ class _LoginScreenState extends State<LoginScreen> {
           }),
     );
   }
+}
+
+void showForgotPassDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+              borderRadius:
+              BorderRadius.circular(20.0)), //this right here
+          child: Container(
+            height: 200,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'What do you want to remember?'),
+                  ),
+                  SizedBox(
+                    width: 320.0,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Save",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: const Color(0xFF1BC0C5),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      });
 }
