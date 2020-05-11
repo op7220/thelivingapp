@@ -6,7 +6,7 @@ class ApiConstant{
 
   static String UPDATE_USER_URL=BASE_URL + "UpdateUser";
 
-  static final String REGISTER = "register";
+  static final String REGISTER = "registrationService";
   static final String LOGIN = "loginService";
   static final String FORGET_PASSWORD = "forgot_password";
   static final String GET_NEWS = "get_all_news";

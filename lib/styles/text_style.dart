@@ -11,7 +11,7 @@ class AppStyle {
   TextStyle style1 = TextStyle(
       fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black);
  static final headerStyle = TextStyle(
-      fontSize: 3.5 * SizeConfig.textMultiplier, fontWeight: FontWeight.w600);
+      fontSize: 3.2 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w600);
   static final editTextFont = TextStyle(
       fontSize: 2.5 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400);
   static final subHeaderStyle = TextStyle(

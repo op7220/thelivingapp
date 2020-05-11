@@ -30,6 +30,11 @@ dependencies:
   shared_preferences: "^0.4.2"
   fluttertoast: ^2.2.11
   connectivity: ^0.4.3+2
+  device_preview:
+  progress_dialog: 1.2.2
+  font_awesome_flutter:
+  flutter_country_picker: ^0.1.6
+  gender_selector: ^1.0.6
 
 dev_dependencies:
   flutter_test:

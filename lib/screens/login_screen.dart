@@ -9,6 +9,7 @@ import 'package:flutterlivingapp/utils/app_tools.dart';
 import 'package:flutterlivingapp/utils/network.dart';
 import 'package:flutterlivingapp/utils/util.dart';
 import 'package:flutterlivingapp/view_model/loginVM.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   textFiled(String value) {
     return Container(
-      height: d_60,
+      height: d_55,
       margin: EdgeInsets.only(left: d_40, right: d_40, top: d_10, bottom: d_10),
       padding: EdgeInsets.only(left: d_8),
       decoration: new BoxDecoration(
@@ -164,6 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 displayProgressDialog(context);
                 model.getData(context, emailId, password).then((resp) {
                   closeProgressDialog(context);
+                  Fluttertoast.showToast(msg: resp.message);
                 });
               }
             }else {

@@ -52,10 +52,12 @@ class SplashScreenState extends State<SplashScreen>
               children: <Widget>[
                 splashImage(),
                 textView(),
-                SizedBox(height: d_200,),
+                SizedBox(height: d_100,),
                 bottomView("Guest Account"),
                 bottomView("Get Started"),
-                bottomView("Login"),
+                Container(
+                    margin: EdgeInsets.only(bottom: d_20),
+                    child:bottomView("Login")),
 
               ],
             ),
@@ -83,7 +85,7 @@ class SplashScreenState extends State<SplashScreen>
     return Container(
       width:  MediaQuery.of(context).size.width * 0.4,
       height: 50,
-      margin: EdgeInsets.only(top: 15),
+      margin: EdgeInsets.only(top: d_15),
       child:MaterialButton(
           color: Colors.black12,
           shape:RoundedRectangleBorder(

@@ -1,6 +1,9 @@
 import 'package:flutterlivingapp/api_services/login_api.dart';
 import 'package:flutterlivingapp/view_model/loginVM.dart';
+import 'package:flutterlivingapp/view_model/signupVM.dart';
 import 'package:get_it/get_it.dart';
+
+import 'api_services/signup_api.dart';
 
 
 
@@ -12,8 +15,8 @@ void setupLocator() {
   locator.registerFactory(() => LoginApi());
   locator.registerFactory(()=>LoginViewModel());
 
- /* //signupLocator
+  //signupLocator
   locator.registerFactory(() => SignUpApi());
-  locator.registerFactory(() => SignUpViewModel());*/
+  locator.registerFactory(() => SignUpViewModel());
 
 }

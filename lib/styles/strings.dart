@@ -47,6 +47,9 @@ const String fpText= "Please enter the mobile phone number \nassociated with you
 const String mobIsNotReg="Mobile number is not registered";
 
 //validations
+//login View Model
+const String enterMobile="Please enter mobile number";
+const String enterValidMobile="Please enter a valid mobile number";
 const String enterPassword="Please enter password";
 const String enterValidPassword="Please enter a valid password";
 const String enterFName="Please enter first name";
@@ -56,6 +59,9 @@ const String enterLName="Please enter last name";
 const String enterValidLName="Please enter valid last name";
 const String enterEmail="Please enter email";
 const String enterValidEmail="Please enter a valid email";
+const String passMustBe6To12="Password must be of 6 to 12 digits";
+const String passAndConfirmPassMustBeSame="Password & Confirm Password must be same";
+const String confirmPassnotempty="Please enter confirm password";
 
 //FirebaseMessaggingScreen
 const String cancel="CANCEL";
