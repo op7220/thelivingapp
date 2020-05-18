@@ -1,11 +1,14 @@
 library country_code_picker;
-import 'package:country_code_picker/country_code.dart';
-import 'package:country_code_picker/country_codes.dart';
-import 'package:country_code_picker/selection_dialog.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutterlivingapp/country_picker/country_code.dart';
+import 'package:flutterlivingapp/country_picker/selection_dialog.dart';
 import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/constant_values.dart';
 
+import 'country_codes.dart';
+
+export 'country_code.dart';
 
 class CountryCodePicker extends StatefulWidget {
   final ValueChanged<CountryCode> onChanged;
@@ -70,7 +73,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   Widget build(BuildContext context) => new GestureDetector(
         child: Row(
           children: <Widget>[
-            Icon(Icons.arrow_drop_down,size: d_30,color: warmGrey,),
+            Icon(Icons.arrow_drop_down,size: d_22,color: Colors.white,),
             Text(
               widget.showOnlyCountryWhenClosed
                   ? selectedItem.toCountryStringOnly()

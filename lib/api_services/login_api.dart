@@ -1,6 +1,8 @@
 
 import 'dart:convert';
+import 'package:flutterlivingapp/model/forgetPass_respo.dart';
 import 'package:flutterlivingapp/model/login_respo.dart';
+import 'package:flutterlivingapp/screens/forgot_pass.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutterlivingapp/api_constant/ApiConstant.dart';
@@ -41,7 +43,7 @@ class LoginApi {
       print("body:${body}");
       if (response.statusCode == 200) {
         print("response:${response.body}");
-        var responseBody = jsonDecode(response.body);
+        var responseBody = json.decode(response.body);
 
         return LoginRespo.fromJson(responseBody);
       } else {
@@ -52,5 +54,31 @@ class LoginApi {
     }
   }
 
+  Future getForgetPassApi(String forgotEmail) async
+  {
+    var body = json.encode({
+      "email": forgotEmail,
+    });
+    Map<String,String> headers = {'Content-Type':'application/json;charset=UTF-8'};
+    try {
+      var response = await http.post(
+        ApiConstant.getBaseURL(ApiConstant.FORGET_PASSWORD),
+        headers:headers,
+        body: body,
+      );
+      print("url:${ApiConstant.getBaseURL(ApiConstant.FORGET_PASSWORD)}");
+      print("body:${body}");
+      if (response.statusCode == 200) {
+        print("response:${response.body}");
+        var responseBody = jsonDecode(response.body);
+
+        return ForgetPassRespo.fromJson(responseBody);
+      } else {
+        throw Exception("API is not Running");
+      }
+    } on Exception catch (e) {
+      // TODO
+    }
+  }
 
 }

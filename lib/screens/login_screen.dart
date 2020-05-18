@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlivingapp/model/SetterGetter.dart';
+import 'package:flutterlivingapp/model/login_respo.dart';
 import 'package:flutterlivingapp/screens/base_view.dart';
+import 'package:flutterlivingapp/screens/home_screen.dart';
 import 'package:flutterlivingapp/screens/splash_screen.dart';
 import 'package:flutterlivingapp/styles/constant_values.dart';
 import 'package:flutterlivingapp/styles/images.dart';
@@ -7,10 +10,12 @@ import 'package:flutterlivingapp/styles/strings.dart';
 import 'package:flutterlivingapp/styles/text_style.dart';
 import 'package:flutterlivingapp/utils/app_tools.dart';
 import 'package:flutterlivingapp/utils/network.dart';
+import 'package:flutterlivingapp/utils/shared_preferences.dart';
 import 'package:flutterlivingapp/utils/util.dart';
 import 'package:flutterlivingapp/view_model/loginVM.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutterlivingapp/styles/color.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,6 +26,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController email = new TextEditingController();
   TextEditingController pass = TextEditingController();
+  TextEditingController forgotEmailController = TextEditingController();
   var emailId, password;
   bool connectionResult = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -42,11 +48,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return BaseView<LoginViewModel>(
         builder: (context, model, child) => Scaffold(
             key: scaffoldKey,
-            backgroundColor: Colors.teal,
+            backgroundColor: bg_color,
             appBar: PreferredSize(
               child: AppBar(
                 elevation: 0,
-                backgroundColor: Colors.teal,
+                backgroundColor: bg_color,
               ),
               preferredSize: Size.fromHeight(20),
             ),
@@ -65,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     textView(passwordText),
                     textFiled("pass"),
-                    forgotPassText(context),
+                    forgotPassText(context,model),
                     SizedBox(
                       height: d_30,
                     ),
@@ -129,10 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  forgotPassText(BuildContext context) {
+  forgotPassText(BuildContext context,LoginViewModel model) {
     return GestureDetector(
       onTap: (){
-        showForgotPassDialog(context);
+        Util().showForgotPassDialog(context,forgotEmailController,model);
       },
       child: Container(
         // margin: EdgeInsets.only(top: 50),
@@ -169,8 +175,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 password = pass.text.toString();
                 displayProgressDialog(context);
                 model.getData(context, emailId, password).then((resp) {
-                  closeProgressDialog(context);
-                  Fluttertoast.showToast(msg: resp.message);
+                  if(resp!=null) {
+                    getResponseDetails(resp);
+                    closeProgressDialog(context);
+                    Fluttertoast.showToast(msg: resp.message);
+
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) =>
+                          HomeScreen(guest: false,)));
+                  }
+
                 });
               }
             }else {
@@ -224,44 +238,20 @@ class _LoginScreenState extends State<LoginScreen> {
           }),
     );
   }
+
+  void getResponseDetails(LoginRespo resp) {
+    if(resp.data!=null)
+      {
+        SetterGetter().setAccessToken(resp.data.token);
+        SetterGetter().setMobile(resp.data.contactNo);
+        SetterGetter().setCountryCode(resp.data.countrycode);
+        SetterGetter().setName(resp.data.firstName);
+        SetterGetter().setEmail(resp.data.email);
+
+        SharedPreferencesHelper.login();
+      }
+
+
+  }
 }
 
-void showForgotPassDialog(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-              borderRadius:
-              BorderRadius.circular(20.0)), //this right here
-          child: Container(
-            height: 200,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'What do you want to remember?'),
-                  ),
-                  SizedBox(
-                    width: 320.0,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Save",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: const Color(0xFF1BC0C5),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        );
-      });
-}

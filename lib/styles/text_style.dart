@@ -7,24 +7,25 @@ import 'constant_values.dart';
 class AppStyle {
   AppStyle._();
 
+
 //text_style
   TextStyle style1 = TextStyle(
       fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black);
  static final headerStyle = TextStyle(
       fontSize: 3.2 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w600);
   static final editTextFont = TextStyle(
-      fontSize: 2.5 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400);
+      fontSize: 2.5 * SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400,fontFamily: 'Montserrat');
   static final subHeaderStyle = TextStyle(
-      fontSize: 2.8* SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400);
+      fontSize: 2.8* SizeConfig.textMultiplier,color: Colors.white, fontWeight: FontWeight.w400,fontFamily: 'Montserrat');
   static final labelTextStyle = TextStyle(
-      fontSize: 2.6* SizeConfig.textMultiplier, color: Colors.white, fontWeight: FontWeight.w400,decoration: TextDecoration.underline);
+      fontSize: 2.6* SizeConfig.textMultiplier, color: Colors.white, fontWeight: FontWeight.w400,decoration: TextDecoration.underline,fontFamily: 'Montserrat');
   static final commonTextStyle = TextStyle(
       fontSize: d_14, color: greyishBrown, fontWeight: FontWeight.w600);
-  static final newsHeadingTextStyle = TextStyle(
-      fontSize: d_18, fontWeight: FontWeight.w700);
-  static final newsContentTextStyle = TextStyle(fontSize: d_14, color: Colors.black,);
+  static final newsHeadingTextStyle = TextStyle(fontSize: d_18, fontWeight: FontWeight.w700);
+  static final forgotPassHeaderStyle = TextStyle(fontSize: 2.5 * SizeConfig.textMultiplier, color: Colors.black,fontFamily: 'Montserrat');
   static  final timeDateTextStyle = TextStyle(fontSize: d_12, color: greyishBrown);
 
+  static final appBarTextStyle=TextStyle(fontSize: 2.6 * SizeConfig.textMultiplier, color: Colors.white, fontFamily: "Montserrat", fontWeight: FontWeight.w500);
 }
 
 

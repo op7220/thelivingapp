@@ -5,6 +5,7 @@ import 'package:flutterlivingapp/locator.dart';
 import 'package:flutterlivingapp/routes.dart';
 import 'package:flutterlivingapp/screens/login_screen.dart';
 import 'package:flutterlivingapp/screens/splash_screen.dart';
+import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/size_config.dart';
 
 void main() {
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               key: navigatorKey,
               debugShowCheckedModeBanner: false,
+             theme: ThemeData(
+               backgroundColor: bg_color
+             ),
              /* locale: DevicePreview.of(context).locale,
               builder: DevicePreview.appBuilder,*/
               home: SplashScreen(),

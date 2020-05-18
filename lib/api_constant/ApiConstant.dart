@@ -8,8 +8,8 @@ class ApiConstant{
 
   static final String REGISTER = "registrationService";
   static final String LOGIN = "loginService";
-  static final String FORGET_PASSWORD = "forgot_password";
-  static final String GET_NEWS = "get_all_news";
+  static final String FORGET_PASSWORD = "forgetPasswordService";
+  static final String GET_MAIN_CATEGORIES = "getMainCategories";
 
 
 

@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'package:country_code_picker/country_code.dart';
-import 'package:flutter_country_picker/country.dart';
+import 'package:flutterlivingapp/country_picker/country_code.dart';
 import 'package:flutterlivingapp/model/login_respo.dart';
 import 'package:flutterlivingapp/model/signupbean/signup_respo.dart';
 import 'package:http/http.dart' as http;
@@ -14,12 +13,12 @@ class SignUpApi {
   var responseBody;
   var pushToken;
   var firstName, lastName, email, mobileNo, password;
-  Country ccp;
+  CountryCode ccp;
   BuildContext context;
   int platform;
 
   Future getSignUpApi(BuildContext context, String firstName, String lastName,
-      String email, Country ccp, String mobileNo, String password) async {
+      String email, CountryCode ccp, String mobileNo, String password) async {
     //shared prefernces
     SharedPreferences prefs = await SharedPreferences.getInstance();
     pushToken = prefs.getString('pushtoken') ?? "not found";

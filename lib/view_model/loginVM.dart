@@ -2,6 +2,7 @@ import 'package:flutterlivingapp/api_services/login_api.dart';
 import 'package:flutterlivingapp/enum/view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterlivingapp/locator.dart';
+import 'package:flutterlivingapp/model/forgetPass_respo.dart';
 import 'package:flutterlivingapp/model/login_respo.dart';
 import 'package:flutterlivingapp/styles/constant_values.dart';
 import 'package:flutterlivingapp/styles/strings.dart';
@@ -45,5 +46,13 @@ class LoginViewModel extends BaseModel {
       return false;
     }
     return true;
+  }
+
+  Future<ForgetPassRespo> getForgetData(
+      BuildContext context, String email) async {
+    setState(ViewState.Busy);
+    data = await _login.getForgetPassApi(email);
+    setState(ViewState.Idle);
+    return data;
   }
 }

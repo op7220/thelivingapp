@@ -1,9 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutterlivingapp/screens/guest_home_screen.dart';
+import 'package:flutterlivingapp/screens/home_screen.dart';
 import 'package:flutterlivingapp/screens/signup_screen.dart';
+import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/constant_values.dart';
 import 'package:flutterlivingapp/styles/images.dart';
 import 'package:flutterlivingapp/styles/text_style.dart';
+import 'package:flutterlivingapp/utils/shared_preferences.dart';
 
 import 'login_screen.dart';
 
@@ -38,11 +42,11 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: bg_color,
         appBar: PreferredSize(
           child: AppBar(
             elevation: 0,
-            backgroundColor: Colors.teal,
+            backgroundColor:bg_color,
           ),
           preferredSize: Size.fromHeight(d_20),
         ),
@@ -105,6 +109,12 @@ class SplashScreenState extends State<SplashScreen>
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => SignUpScreen()));
               }
+            else if(title=="Guest Account")
+            {
+              SharedPreferencesHelper.logout();
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => GuestHomeScreen(guest:true)));
+            }
           }
       ) ,
     );

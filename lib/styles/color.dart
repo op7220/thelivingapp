@@ -27,6 +27,18 @@ const Color vermillion=Color.fromRGBO(240, 40, 11, 10.0);
 const Color emeraldGreen=Color.fromRGBO(0, 119, 23, 10.0);
 const Color softBlue=Color.fromRGBO(102, 126, 234, 10.0);
 
+const Color bg_color=Color.fromRGBO(2, 99, 107, 10.0);
+const Color bg_textfieldcolor=Color.fromRGBO(11, 18, 21, 10.0);
+const Color bg_registerbtn=Color.fromRGBO(25, 107, 114, 10.0);
+
+
+
+
+
+
+
+
+
 
 
 

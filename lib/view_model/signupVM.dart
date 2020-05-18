@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_country_picker/country.dart';
 import 'package:flutterlivingapp/api_services/signup_api.dart';
+import 'package:flutterlivingapp/country_picker/country_code.dart';
 import 'package:flutterlivingapp/enum/view_state.dart';
 import 'package:flutterlivingapp/locator.dart';
 import 'package:flutterlivingapp/model/signupbean/signup_respo.dart';
@@ -19,7 +19,7 @@ class SignUpViewModel extends BaseModel {
       String firstName,
       String lastName,
       String email,
-      Country ccp,
+      CountryCode ccp,
       String mobileNo,
       String password) async {
     setState(ViewState.Busy);

@@ -33,8 +33,9 @@ dependencies:
   device_preview:
   progress_dialog: 1.2.2
   font_awesome_flutter:
-  flutter_country_picker: ^0.1.6
   gender_selector: ^1.0.6
+  datetime_picker_formfield: 1.0.0
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +52,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   assets:
     - image/

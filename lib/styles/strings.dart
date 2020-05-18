@@ -7,8 +7,8 @@ const String noConnection="No Internet Connection";
 const String login="log in";
 const String loginText="Login";
 const String phoneNo="phone no";
-const String loginlabelText="Please enter your email";
-const String passwordText="Please enter your password";
+const String loginlabelText="Please enter your email *";
+const String passwordText="Please enter your password *";
 const String confirmPassword="confirm password";
 const String forgotPassword="forgot password?";
 const String isforgotPassword="forgot password?";
@@ -43,8 +43,8 @@ const String paid="Featured";
 
 //Forget Password Screen
 const String sendOtp="Send OTP";
-const String fpText= "Please enter the mobile phone number \nassociated with your account.";
-const String mobIsNotReg="Mobile number is not registered";
+const String resetPassText= "Reset Your Password";
+const String resetPassemailText="Please enter your email address and we will send you an email to reset password";
 
 //validations
 //login View Model
@@ -66,6 +66,10 @@ const String confirmPassnotempty="Please enter confirm password";
 //FirebaseMessaggingScreen
 const String cancel="CANCEL";
 const String view="VIEW";
+const String ok="OK";
 
 //ProgressBarScreen
 const String plzWait="please wait...";
+
+//TextConstants
+const String hiNiceToMeetText="Hi, Nice to meet you";
