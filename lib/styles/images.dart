@@ -32,7 +32,7 @@ Image giffyImage=Image.asset('images/giphy.gif');
 //bottomNavBar
 
 Image navigation=Image.asset("image/interface.png",fit: BoxFit.fill);
-Image love=Image.asset("image/love.png",fit: BoxFit.fill);
+Image love=Image.asset("image/love.png",fit: BoxFit.contain);
 Image business=Image.asset("image/business.png",fit: BoxFit.fill);
 Image shopping=Image.asset("image/shopping.png",fit: BoxFit.fill);
 

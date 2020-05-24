@@ -1,15 +1,18 @@
-import 'package:device_preview/device_preview.dart';
+import 'package:device_preview/device_preview.dart' as device;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterlivingapp/locator.dart';
 import 'package:flutterlivingapp/routes.dart';
 import 'package:flutterlivingapp/screens/login_screen.dart';
+import 'package:flutterlivingapp/screens/main_splash_screen.dart';
 import 'package:flutterlivingapp/screens/splash_screen.dart';
 import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/size_config.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown]);
   setupLocator();
   runApp(MyApp());
 }
@@ -28,11 +31,12 @@ class MyApp extends StatelessWidget {
               key: navigatorKey,
               debugShowCheckedModeBanner: false,
              theme: ThemeData(
-               backgroundColor: bg_color
+               backgroundColor: bg_color,
+               fontFamily: "Montserrat"
              ),
              /* locale: DevicePreview.of(context).locale,
               builder: DevicePreview.appBuilder,*/
-              home: SplashScreen(),
+              home: MainSplashScreen(),
               onGenerateRoute: Router.generateRoute,
             );
           },

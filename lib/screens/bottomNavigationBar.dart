@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/color.dart';
 import 'package:flutterlivingapp/styles/constant_values.dart';
@@ -28,33 +29,38 @@ class BottomNavState extends State<BottomNav> {
   BottomNavState({Key key, this.page}) {
     bottomBarItem.add(BottomNavigationBarItem(
         icon: Container(
-          height:SizeConfig.widthMultiplier>400?d_30:d_20,
-          width: SizeConfig.widthMultiplier>400?d_30:d_20,
+          height:SizeConfig.widthMultiplier>400?d_35:d_20,
+          width: SizeConfig.widthMultiplier>400?d_35:d_20,
+          alignment: Alignment.bottomCenter,
           child: love,
         ),
         title: Text("")));
 
     bottomBarItem.add(BottomNavigationBarItem(
         icon: Container(
-          height:SizeConfig.widthMultiplier>400?d_30:d_20,
-          width: SizeConfig.widthMultiplier>400?d_30:d_20,
+          height:SizeConfig.widthMultiplier>400?d_35:d_20,
+          width: SizeConfig.widthMultiplier>400?d_35:d_20,
+          alignment: Alignment.bottomCenter,
           child: navigation,
         ),
         title: Text("")));
 
     bottomBarItem.add(BottomNavigationBarItem(
         icon: Container(
-          height:SizeConfig.widthMultiplier>400?d_30:d_20,
-          width: SizeConfig.widthMultiplier>400?d_30:d_20,
+          height:SizeConfig.widthMultiplier>400?d_35:d_20,
+          width: SizeConfig.widthMultiplier>400?d_35:d_20,
+          alignment: Alignment.bottomCenter,
           child: business,
         ),
         title: Text("")));
 
     bottomBarItem.add(BottomNavigationBarItem(
         icon: Container(
-          height:SizeConfig.widthMultiplier>400?d_30:d_20,
-          width: SizeConfig.widthMultiplier>400?d_30:d_20,
+          height:SizeConfig.widthMultiplier>400?d_35:d_20,
+          width: SizeConfig.widthMultiplier>400?d_35:d_20,
           child: shopping,
+          alignment: Alignment.bottomCenter,
+          padding: EdgeInsets.only(top: d_2),
         ),
         title: Text("")));
   }
@@ -73,7 +79,6 @@ class BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     _context=context;
     return Container(
-      height: SizeConfig.widthMultiplier>400?d_60:d_52,
       child: BottomNavigationBar(
         showSelectedLabels: false,
         selectedFontSize: d_14,

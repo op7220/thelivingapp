@@ -23,7 +23,7 @@ class SplashScreenState extends State<SplashScreen>
   String tokenValue;
   String spName, spEmail;
   int userId;
-  bool isLogin;
+  bool isLogin = false;
 
   void startTimer() {
     Timer(Duration(seconds: 0), () {
@@ -96,7 +96,7 @@ class SplashScreenState extends State<SplashScreen>
               borderRadius: new BorderRadius.circular(5.0),
               side: BorderSide(color: Colors.white)
           ),
-          child: Text(title,style: TextStyle(color: Colors.white,fontSize: d_14),),
+          child: FittedBox(child: Text(title,style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width>400? d_15:d_13),)),
           onPressed: ()
           {
             if(title=="Login")

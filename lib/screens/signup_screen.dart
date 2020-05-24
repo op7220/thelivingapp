@@ -268,7 +268,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: "${formatter.format(selectedDate)}".split(' ')[0],
               hintStyle: TextStyle(color: Colors.white),
               fillColor: Colors.white,
-              suffixIcon: Icon(Icons.date_range)),
+              suffixIcon: Icon(Icons.date_range,color: Colors.white,)),
         ),
       ),
     );
@@ -382,16 +382,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             userEmail.text, ccp, mobileNo.text, password.text)
                         .then((resp) {
                       print("====>${resp}");
-                      Fluttertoast.showToast(msg: resp.message);
                       if (resp != null) {
+                        if(resp.status=="0")
+                        {
+                          Fluttertoast.showToast(msg: resp.message);
+                          closeProgressDialog(context);
+                        }
+                        else{
                         closeProgressDialog(context);
+                        Fluttertoast.showToast(msg: resp.message);
                         Future.delayed(Duration(seconds: 2)).then((data) {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => LoginScreen()));
                         });
-                      }
+                      }}
                     });
                   }
                 } else {

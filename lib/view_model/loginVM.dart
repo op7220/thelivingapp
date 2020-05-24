@@ -40,7 +40,7 @@ class LoginViewModel extends BaseModel {
       setState(ViewState.Idle);
       return false;
     }
-    if (password.length < i_6 || password.length > i_12) {
+    if (password.length < i_3 || password.length > i_12) {
         Fluttertoast.showToast(msg: enterValidPassword);
       setState(ViewState.Idle);
       return false;

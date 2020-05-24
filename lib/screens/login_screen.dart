@@ -176,13 +176,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 displayProgressDialog(context);
                 model.getData(context, emailId, password).then((resp) {
                   if(resp!=null) {
-                    getResponseDetails(resp);
-                    closeProgressDialog(context);
-                    Fluttertoast.showToast(msg: resp.message);
+                    if(resp.status=="0")
+                      {
+                        Fluttertoast.showToast(msg: resp.message);
+                        closeProgressDialog(context);
+                      }
+                    else
+                      {
+                        getResponseDetails(resp);
+                        closeProgressDialog(context);
+                        Fluttertoast.showToast(msg: resp.message);
 
-                      Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) =>
-                          HomeScreen(guest: false,)));
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) =>
+                            HomeScreen(guest: false,)));
+                      }
+
                   }
 
                 });
